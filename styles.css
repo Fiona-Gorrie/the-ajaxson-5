@@ -1,0 +1,21 @@
+header {
+    background: #eee;
+    overflow: hidden;
+    text-align: center;
+}
+
+body{
+    
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 5% 30%;
+    text-align: center;
+    padding: 10px;
+
+}
+
+form {
+    
+    border: 1px solid black;
+    padding: 5%;
+}
+

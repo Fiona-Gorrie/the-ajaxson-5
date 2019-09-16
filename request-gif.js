@@ -16,11 +16,11 @@ var ajaxson5 = new Vue({
                 this.errorMessage = "No gifs for you"
             } else {
             // get the user's input text from the DOM
-            var searchQuery = this.tagValue; // TODO should be e.g. "dance"
+            var searchQuery = this.tagValue.value; // TODO should be e.g. "dance"
 
             // configure a few parameters to attach to our request
             var api_key = "dc6zaTOxFJmzC";
-            var tag = "tagValue"; // TODO should be e.g. "jackson 5 dance"
+            var tag = "tagValue" + searchQuery; // TODO should be e.g. "jackson 5 dance"
 
             fetch(`https://api.giphy.com/v1/gifs/random?api_key=${api_key}&tag=${tag}`)
 		        .then(resp => resp.ok ? resp.json() : Promise.reject(resp))
@@ -32,6 +32,7 @@ var ajaxson5 = new Vue({
                     console.log(results);
                     // TODO
                     // 1. set the imgSrc value in our data to the GIF's image_url inside results
+                    console.log(results.data.image_url)
                     this.imgSrc = results.data.image_url;
                     console.log(results.data.image_url);
                     // 2. clear the error message and loading state (since our request just succeede)
