@@ -2,11 +2,12 @@ var ajaxson5 = new Vue({
     el: '#mount-point',
     data: function () {
         return {
-            tagValue: null,
+            tagValue: 'Jackson 5',
             errorMessage: null,
             loading: false,
             imgSrc: null,
             riddle: null,
+            searchQuery: '',
         };
     },
     methods: {
@@ -16,12 +17,13 @@ var ajaxson5 = new Vue({
                 this.errorMessage = "No gifs for you"
             } else {
             // get the user's input text from the DOM
-            var searchQuery = this.tagValue.value; // TODO should be e.g. "dance"
+            // TODO should be e.g. "dance"
 
             // configure a few parameters to attach to our request
             var api_key = "dc6zaTOxFJmzC";
-            var tag = "tagValue" + searchQuery; // TODO should be e.g. "jackson 5 dance"
-
+            // TODO should be e.g. "jackson 5 dance"
+            var tag = this.tagValue + ' ' + this.searchQuery
+        
             fetch(`https://api.giphy.com/v1/gifs/random?api_key=${api_key}&tag=${tag}`)
 		        .then(resp => resp.ok ? resp.json() : Promise.reject(resp))
 		        .then((response) => {
@@ -29,12 +31,11 @@ var ajaxson5 = new Vue({
                     // if the response comes back successfully, the code in here will execute.
 
                     console.log("we received a response!");
-                    console.log(results);
+                    console.log(response);
                     // TODO
                     // 1. set the imgSrc value in our data to the GIF's image_url inside results
-                    console.log(results.data.image_url)
-                    this.imgSrc = results.data.image_url;
-                    console.log(results.data.image_url);
+                    
+                    this.imgSrc = response.data.image_url;
                     // 2. clear the error message and loading state (since our request just succeede)
                     this.errorMessage = null;
                     this.loading = null;
