@@ -20,7 +20,7 @@ var ajaxson5 = new Vue({
             // TODO should be e.g. "dance"
 
             // configure a few parameters to attach to our request
-            var api_key = "dc6zaTOxFJmzC";
+            var api_key = "";
             // TODO should be e.g. "jackson 5 dance"
             var tag = this.tagValue + ' ' + this.searchQuery
         
